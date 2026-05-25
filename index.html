@@ -1,539 +1,340 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Anime+ Premium</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-<style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
-scroll-behavior:smooth;
-}
-
-body{
-background:#070707;
-color:white;
-overflow-x:hidden;
-}
-
-/* NAVBAR */
-
-nav{
-
-position:fixed;
-top:0;
-width:100%;
-
-display:flex;
-justify-content:space-between;
-align-items:center;
-
-padding:20px 60px;
-
-background:rgba(0,0,0,0.6);
-
-backdrop-filter:blur(10px);
-
-z-index:1000;
-}
-
-.logo{
-
-font-size:35px;
-font-weight:700;
-
-color:#ff6a00;
-
-text-shadow:0 0 20px #ff6a00;
-}
-
-nav ul{
-
-display:flex;
-gap:30px;
-
-list-style:none;
-}
-
-nav ul li a{
-
-text-decoration:none;
-color:white;
-
-font-weight:600;
-
-transition:0.3s;
-}
-
-nav ul li a:hover{
-
-color:#ff6a00;
-
-text-shadow:0 0 15px #ff6a00;
-}
-
-/* HERO */
-
-.hero{
-
-height:100vh;
-
-display:flex;
-align-items:center;
-
-padding:100px;
-
-background:
-linear-gradient(rgba(0,0,0,0.5),
-rgba(0,0,0,0.9)),
-
-url("https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1974&auto=format&fit=crop");
-
-background-size:cover;
-background-position:center;
-}
-
-.hero-content{
-
-max-width:650px;
-}
-
-.hero-content h1{
-
-font-size:90px;
-
-line-height:1.1;
-
-margin-bottom:20px;
-
-text-shadow:0 0 30px #ff6a00;
-}
-
-.hero-content p{
-
-font-size:22px;
-
-line-height:1.7;
-
-color:#ddd;
-
-margin-bottom:35px;
-}
-
-.hero-buttons{
-
-display:flex;
-gap:20px;
-}
-
-.hero-buttons button{
-
-padding:15px 40px;
-
-border:none;
-border-radius:50px;
-
-font-size:18px;
-font-weight:600;
-
-cursor:pointer;
-
-transition:0.3s;
-}
-
-.watch-btn{
-
-background:#ff6a00;
-color:white;
-
-box-shadow:0 0 20px #ff6a00;
-}
-
-.watch-btn:hover{
-
-transform:scale(1.08);
-
-background:#ff3c00;
-
-box-shadow:0 0 35px #ff3c00;
-}
-
-.info-btn{
-
-background:rgba(255,255,255,0.1);
-
-color:white;
-
-border:1px solid rgba(255,255,255,0.2);
-}
-
-.info-btn:hover{
-
-background:white;
-color:black;
-}
-
-/* SECTION */
-
-.section-title{
-
-font-size:45px;
-
-margin:60px 50px 30px;
-
-color:#ff6a00;
-
-text-shadow:0 0 20px #ff6a00;
-}
-
-/* CARDS */
-
-.cards{
-
-display:flex;
-gap:25px;
-
-padding:0 50px 80px;
-
-overflow-x:auto;
-}
-
-.cards::-webkit-scrollbar{
-display:none;
-}
-
-.card{
-
-min-width:280px;
-
-background:#111;
-
-border-radius:20px;
-
-overflow:hidden;
-
-transition:0.4s;
-
-cursor:pointer;
-}
-
-.card:hover{
-
-transform:translateY(-12px) scale(1.04);
-
-box-shadow:0 0 30px #ff6a00;
-}
-
-.card img{
-
-width:100%;
-height:360px;
-
-object-fit:cover;
-
-transition:0.4s;
-}
-
-.card:hover img{
-
-transform:scale(1.1);
-}
-
-.card-content{
-
-padding:20px;
-}
-
-.card-content h2{
-
-margin-bottom:10px;
-
-color:#ff6a00;
-}
-
-.card-content p{
-
-color:#ccc;
-
-line-height:1.6;
-}
-
-/* BANNER */
-
-.banner{
-
-margin:40px 50px;
-
-height:400px;
-
-border-radius:30px;
-
-display:flex;
-align-items:end;
-
-padding:40px;
-
-background:
-linear-gradient(rgba(0,0,0,0.3),
-rgba(0,0,0,0.9)),
-
-url("https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1974&auto=format&fit=crop");
-
-background-size:cover;
-background-position:center;
-}
-
-.banner-content h1{
-
-font-size:60px;
-
-margin-bottom:15px;
-
-text-shadow:0 0 20px #ff6a00;
-}
-
-.banner-content p{
-
-font-size:20px;
-
-max-width:600px;
-
-color:#ddd;
-}
-
-/* FOOTER */
-
-footer{
-
-padding:40px;
-
-text-align:center;
-
-background:#050505;
-
-color:#888;
-
-margin-top:50px;
-}
-
-/* RESPONSIVE */
-
-@media(max-width:768px){
-
-nav{
-padding:20px;
-}
-
-nav ul{
-gap:15px;
-}
-
-.hero{
-padding:40px;
-justify-content:center;
-text-align:center;
-}
-
-.hero-content h1{
-font-size:55px;
-}
-
-.hero-content p{
-font-size:18px;
-}
-
-.hero-buttons{
-justify-content:center;
-flex-wrap:wrap;
-}
-
-.section-title{
-font-size:35px;
-margin:40px 20px 20px;
-}
-
-.cards{
-padding:0 20px 50px;
-}
-
-.banner{
-margin:20px;
-height:300px;
-padding:20px;
-}
-
-.banner-content h1{
-font-size:40px;
-}
-
-}
-
-</style>
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Anime+ Ultra Premium</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins',sans-serif;
+    }
+
+    body{
+      background:#0b0b0f;
+      color:white;
+      overflow-x:hidden;
+    }
+
+    header{
+      position:fixed;
+      top:0;
+      width:100%;
+      padding:20px 8%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      z-index:1000;
+      background:rgba(0,0,0,0.4);
+      backdrop-filter:blur(10px);
+    }
+
+    .logo{
+      font-size:32px;
+      font-weight:800;
+      color:#ffb300;
+      text-shadow:0 0 20px #ff9900;
+    }
+
+    nav a{
+      color:white;
+      text-decoration:none;
+      margin-left:30px;
+      font-weight:500;
+      transition:0.3s;
+    }
+
+    nav a:hover{
+      color:#ffb300;
+    }
+
+    .hero{
+      height:100vh;
+      background:
+      linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.8)),
+      url('https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1600&auto=format&fit=crop');
+      background-size:cover;
+      background-position:center;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      padding:20px;
+    }
+
+    .hero-content h1{
+      font-size:90px;
+      font-weight:800;
+      color:white;
+      text-shadow:0 0 25px #ff9900;
+      animation:glow 2s infinite alternate;
+    }
+
+    @keyframes glow{
+      from{
+        text-shadow:0 0 10px #ff9900;
+      }
+      to{
+        text-shadow:0 0 35px #ff7300;
+      }
+    }
+
+    .hero-content p{
+      margin-top:20px;
+      font-size:22px;
+      color:#ddd;
+      max-width:700px;
+    }
+
+    .hero-buttons{
+      margin-top:35px;
+    }
+
+    .btn{
+      padding:14px 35px;
+      border:none;
+      border-radius:40px;
+      font-size:17px;
+      font-weight:600;
+      cursor:pointer;
+      margin:10px;
+      transition:0.3s;
+    }
+
+    .watch-btn{
+      background:#ff9900;
+      color:black;
+      box-shadow:0 0 20px #ff9900;
+    }
+
+    .watch-btn:hover{
+      transform:scale(1.08);
+      box-shadow:0 0 40px #ff9900;
+    }
+
+    .trailer-btn{
+      background:transparent;
+      border:2px solid white;
+      color:white;
+    }
+
+    .trailer-btn:hover{
+      background:white;
+      color:black;
+    }
+
+    .section{
+      padding:100px 8%;
+    }
+
+    .section-title{
+      font-size:42px;
+      margin-bottom:40px;
+      color:#ffb300;
+    }
+
+    .anime-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:30px;
+    }
+
+    .card{
+      background:#111;
+      border-radius:20px;
+      overflow:hidden;
+      transition:0.4s;
+      position:relative;
+    }
+
+    .card:hover{
+      transform:translateY(-10px) scale(1.03);
+      box-shadow:0 0 30px rgba(255,153,0,0.5);
+    }
+
+    .card img{
+      width:100%;
+      height:350px;
+      object-fit:cover;
+    }
+
+    .card-content{
+      padding:20px;
+    }
+
+    .card-content h3{
+      font-size:24px;
+      margin-bottom:10px;
+    }
+
+    .card-content p{
+      color:#aaa;
+      font-size:14px;
+    }
+
+    .watch-now{
+      margin-top:15px;
+      display:inline-block;
+      padding:10px 20px;
+      background:#ff9900;
+      border-radius:30px;
+      text-decoration:none;
+      color:black;
+      font-weight:600;
+    }
+
+    .watch-now:hover{
+      background:white;
+    }
+
+    .trailer-section{
+      padding:100px 8%;
+      text-align:center;
+    }
+
+    iframe{
+      width:100%;
+      max-width:1000px;
+      height:550px;
+      border:none;
+      border-radius:20px;
+      margin-top:30px;
+      box-shadow:0 0 40px rgba(255,153,0,0.4);
+    }
+
+    footer{
+      text-align:center;
+      padding:40px;
+      background:#080808;
+      color:#777;
+      margin-top:50px;
+    }
+
+    @media(max-width:768px){
+
+      .hero-content h1{
+        font-size:55px;
+      }
+
+      nav{
+        display:none;
+      }
+
+      iframe{
+        height:250px;
+      }
+
+    }
+
+  </style>
 </head>
-
 <body>
 
-<!-- NAVBAR -->
+  <header>
+    <div class="logo">ANIME+</div>
 
-<nav>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Trending</a>
+      <a href="#">Movies</a>
+      <a href="#">Episodes</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
 
-<div class="logo">ANIME+</div>
+  <section class="hero">
 
-<ul>
+    <div class="hero-content">
 
-<li><a href="index.html">Home</a></li>
+      <h1>ENTER ANIME UNIVERSE 🔥</h1>
 
-<li><a href="anime.html">Anime</a></li>
+      <p>
+        Stream legendary anime battles, emotional stories and cinematic adventures
+        in ultra premium experience.
+      </p>
 
-<li><a href="about.html">About</a></li>
+      <div class="hero-buttons">
+        <button class="btn watch-btn">WATCH NOW</button>
+        <button class="btn trailer-btn">TRAILER</button>
+      </div>
 
-<li><a href="contact.html">Contact</a></li>
+    </div>
 
-</ul>
+  </section>
 
-</nav>
+  <section class="section">
 
-<!-- HERO -->
+    <h2 class="section-title">🔥 Trending Anime</h2>
 
-<section class="hero">
+    <div class="anime-grid">
 
-<div class="hero-content">
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1578632767115-351597cf2477?q=80&w=800&auto=format&fit=crop">
 
-<h1>WATCH ANIME<br>LIKE NEVER BEFORE 🔥</h1>
+        <div class="card-content">
+          <h3>Shadow Ninja</h3>
+          <p>Dark warrior rising from forgotten clans.</p>
 
-<p>
-Stream legendary anime battles, futuristic warriors
-and cinematic adventures in one premium platform.
-</p>
+          <a href="#" class="watch-now">Watch Now</a>
+        </div>
+      </div>
 
-<div class="hero-buttons">
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=800&auto=format&fit=crop">
 
-<button class="watch-btn" id="watchBtn">
-▶ WATCH NOW
-</button>
+        <div class="card-content">
+          <h3>Cyber Samurai</h3>
+          <p>Future meets ancient warrior spirit.</p>
 
-<button class="info-btn">
-MORE INFO
-</button>
+          <a href="#" class="watch-now">Watch Now</a>
+        </div>
+      </div>
 
-</div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=800&auto=format&fit=crop">
 
-</div>
+        <div class="card-content">
+          <h3>Fire Hero</h3>
+          <p>Epic battles and unstoppable powers.</p>
 
-</section>
+          <a href="#" class="watch-now">Watch Now</a>
+        </div>
+      </div>
 
-<!-- TRENDING -->
+    </div>
 
-<h1 class="section-title">TRENDING NOW</h1>
+  </section>
 
-<section class="cards">
+  <section class="trailer-section">
 
-<div class="card">
+    <h2 class="section-title">🎬 Featured Trailer</h2>
 
-<img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1974&auto=format&fit=crop">
+    <iframe
+      src="https://www.youtube.com/embed/1roy4o4tqQM"
+      allowfullscreen>
+    </iframe>
 
-<div class="card-content">
+  </section>
 
-<h2>Cyber Ninja</h2>
+  <footer>
+    © 2026 Anime+ Premium | Designed By Ajay 🔥
+  </footer>
 
-<p>
-The fastest anime warrior from future Tokyo.
-</p>
+  <script>
 
-</div>
+    const watchBtn = document.querySelector(".watch-btn");
 
-</div>
+    watchBtn.addEventListener("click", () => {
+      alert("Welcome To Anime+ Premium 🔥");
+    });
 
-<div class="card">
-
-<img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1974&auto=format&fit=crop">
-
-<div class="card-content">
-
-<h2>Shadow Fire</h2>
-
-<p>
-Legendary fighter with unstoppable power.
-</p>
-
-</div>
-
-</div>
-
-<div class="card">
-
-<img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1974&auto=format&fit=crop">
-
-<div class="card-content">
-
-<h2>Blade Hero</h2>
-
-<p>
-The strongest swordsman in anime history.
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- FEATURED -->
-
-<section class="banner">
-
-<div class="banner-content">
-
-<h1>FEATURED SERIES ⚔</h1>
-
-<p>
-Dive into the darkest anime universe ever created.
-Epic fights and futuristic powers await you.
-</p>
-
-</div>
-
-</section>
-
-<!-- FOOTER -->
-
-<footer>
-
-<p>
-© 2026 Anime+ Premium Streaming Platform 🚀
-</p>
-
-</footer>
-
-<!-- JAVASCRIPT -->
-
-<script>
-
-const watchBtn = document.getElementById("watchBtn");
-
-watchBtn.addEventListener("click", ()=>{
-
-alert("Welcome To Anime+ Premium 🔥");
-
-});
-
-</script>
+  </script>
 
 </body>
-
 </html>
-```
