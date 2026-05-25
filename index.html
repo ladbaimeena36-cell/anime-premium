@@ -1,214 +1,314 @@
-```html
-<!DOCTYPE html>
+[25-05-2026 14:27] Ajay Meena: <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Anime AI Premium</title>
-
+<title>AnimeX — Stream Anime Free</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0a0a0f; color: #fff; font-family: 'Nunito', sans-serif; min-height: 100vh; }
 
-body{
-    margin:0;
-    padding:0;
-    background:#111;
-    font-family:Arial;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    height:100vh;
-    color:white;
-}
+  /* NAV */
+  nav { display: flex; align-items: center; justify-content: space-between; padding: 16px 40px; background: linear-gradient(to bottom, rgba(0,0,0,0.9), transparent); position: sticky; top: 0; z-index: 100; }
+  .logo { font-family: 'Bebas Neue', cursive; font-size: 32px; color: #e8c84a; letter-spacing: 2px; text-shadow: 0 0 20px rgba(232,200,74,0.4); }
+  .logo span { color: #e84a4a; }
+  .nav-links { display: flex; gap: 24px; list-style: none; }
+  .nav-links a { color: #ccc; text-decoration: none; font-size: 14px; font-weight: 600; transition: color 0.2s; }
+  .nav-links a:hover { color: #e8c84a; }
+  .nav-right { display: flex; align-items: center; gap: 16px; }
+  .search-box { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15); border-radius: 20px; padding: 8px 16px; color: #fff; font-size: 14px; outline: none; width: 200px; font-family: 'Nunito', sans-serif; }
+  .search-box::placeholder { color: #888; }
+  .btn-login { background: transparent; border: 1px solid #e8c84a; color: #e8c84a; padding: 8px 20px; border-radius: 20px; font-size: 14px; font-weight: 700; cursor: pointer; transition: all 0.2s; font-family: 'Nunito', sans-serif; }
+  .btn-login:hover { background: #e8c84a; color: #000; }
+  .btn-signup { background: #e84a4a; border: none; color: #fff; padding: 8px 20px; border-radius: 20px; font-size: 14px; font-weight: 700; cursor: pointer; transition: all 0.2s; font-family: 'Nunito', sans-serif; }
+  .btn-signup:hover { background: #ff6b6b; }
 
-.chat-container{
-    width:400px;
-    height:700px;
-    background:#1b1b1b;
-    border-radius:30px;
-    padding:20px;
-    box-shadow:0 0 40px orange;
-    display:flex;
-    flex-direction:column;
-}
+  /* HERO */
+  .hero { position: relative; height: 580px; display: flex; align-items: flex-end; padding: 0 40px 60px; overflow: hidden; }
+  .hero-bg-overlay { position: absolute; inset: 0; background: linear-gradient(to right, rgba(0,0,0,0.95) 40%, rgba(0,0,0,0.3) 100%), linear-gradient(to top, rgba(0,0,0,0.8) 20%, transparent 60%); }
+  .hero-art { position: absolute; right: 0; top: 0; height: 100%; width: 55%; display: flex; align-items: center; justify-content: center; }
+  .hero-content { position: relative; z-index: 2; max-width: 520px; }
+  .hero-badge { display: inline-block; background: #e84a4a; color: #fff; font-size: 11px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; padding: 4px 12px; border-radius: 4px; margin-bottom: 16px; }
+  .hero-title { font-family: 'Bebas Neue', cursive; font-size: 80px; line-height: 0.9; color: #fff; letter-spacing: 3px; margin-bottom: 16px; text-shadow: 0 4px 20px rgba(0,0,0,0.5); }
+  .hero-title span { color: #e8c84a; }
+  .hero-meta { display: flex; gap: 16px; align-items: center; margin-bottom: 16px; }
+  .hero-rating { background: #e8c84a; color: #000; font-size: 12px; font-weight: 800; padding: 3px 10px; border-radius: 4px; }
+  .hero-info { color: #aaa; font-size: 13px; }
+  .hero-desc { color: #bbb; font-size: 15px; line-height: 1.6; margin-bottom: 28px; max-width: 440px; }
+  .hero-buttons { display: flex; gap: 12px; }
+  .btn-play { background: #e84a4a; color: #fff; border: none; padding: 14px 32px; border-radius: 8px; font-size: 16px; font-weight: 800; cursor: pointer; display: flex; align-items: center; gap: 8px; transition: all 0.2s; font-family: 'Nunito', sans-serif; }
+  .btn-play:hover { background: #ff6b6b; transform: scale(1.03); }
+  .btn-list { background: rgba(255,255,255,0.1); color: #fff; border: 1px solid rgba(255,255,255,0.2); padding: 14px 28px; border-radius: 8px; font-size: 16px; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 8px; transition: all 0.2s; font-family: 'Nunito', sans-serif; }
+  .btn-list:hover { background: rgba(255,255,255,0.2); }
+[25-05-2026 14:27] Ajay Meena: /* SECTIONS */
+  .section { padding: 32px 40px; }
+  .section-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+  .section-title { font-family: 'Bebas Neue', cursive; font-size: 26px; letter-spacing: 2px; color: #fff; }
+  .section-title span { color: #e8c84a; }
+  .see-all { color: #e8c84a; font-size: 13px; font-weight: 700; text-decoration: none; cursor: pointer; }
 
-.title{
-    font-size:40px;
-    font-weight:bold;
-    color:#ffcc70;
-    margin-bottom:20px;
-}
+  /* CARDS */
+  .cards-row { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; }
+  .card { border-radius: 10px; overflow: hidden; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; position: relative; aspect-ratio: 2/3; }
+  .card:hover { transform: scale(1.05); box-shadow: 0 8px 30px rgba(0,0,0,0.6); }
+  .card-thumb { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 52px; position: relative; }
+  .card-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.9) 30%, transparent 70%); opacity: 0; transition: opacity 0.2s; display: flex; flex-direction: column; justify-content: flex-end; padding: 12px; }
+  .card:hover .card-overlay { opacity: 1; }
+  .card-name { font-size: 13px; font-weight: 800; color: #fff; margin-bottom: 4px; }
+  .card-ep { font-size: 11px; color: #aaa; }
+  .card-play-btn { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0); background: rgba(232,74,74,0.9); border-radius: 50%; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; transition: transform 0.2s; font-size: 18px; }
+  .card:hover .card-play-btn { transform: translate(-50%, -50%) scale(1); }
+  .card-badge { position: absolute; top: 8px; left: 8px; background: #e84a4a; color: #fff; font-size: 9px; font-weight: 800; letter-spacing: 1px; padding: 2px 7px; border-radius: 3px; }
 
-#chat-box{
-    flex:1;
-    overflow-y:auto;
-    padding:10px;
-}
+  /* WIDE CARDS */
+  .wide-cards-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .wide-card { border-radius: 12px; overflow: hidden; cursor: pointer; transition: transform 0.2s; position: relative; aspect-ratio: 16/9; }
+  .wide-card:hover { transform: scale(1.03); }
+  .wide-card-body { width: 100%; height: 100%; display: flex; align-items: flex-end; padding: 16px; position: relative; }
+  .wide-card-info { position: relative; z-index: 2; }
+  .wide-card-title { font-family: 'Bebas Neue', cursive; font-size: 22px; letter-spacing: 1px; color: #fff; }
+  .wide-card-sub { font-size: 12px; color: #ccc; }
+  .wide-card-ep-badge { position: absolute; top: 12px; right: 12px; background: rgba(232,200,74,0.9); color: #000; font-size: 11px; font-weight: 800; padding: 3px 10px; border-radius: 4px; }
 
-.message{
-    padding:15px;
-    border-radius:20px;
-    margin:10px 0;
-    max-width:80%;
-    word-wrap:break-word;
-}
+  /* GENRES */
+  .genres-row { display: flex; gap: 10px; flex-wrap: wrap; }
+  .genre-pill { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1); color: #ccc; padding: 8px 18px; border-radius: 20px; font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+  .genre-pill:hover, .genre-pill.active { background: #e8c84a; color: #000; border-color: #e8c84a; font-weight: 800; }
 
-.user{
-    background:#ffd54f;
-    color:black;
-    margin-left:auto;
-}
+  /* FOOTER */
+  footer { background: #06060a; padding: 40px; margin-top: 20px; }
+  .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 32px; }
+  .footer-logo { font-family: 'Bebas Neue', cursive; font-size: 36px; color: #e8c84a; margin-bottom: 12px; }
+  .footer-logo span { color: #e84a4a; }
+  .footer-desc { color: #666; font-size: 13px; line-height: 1.6; }
+  .footer-heading { color: #888; font-size: 11px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; }
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-links a { color: #555; font-size: 13px; text-decoration: none; transition: color 0.2s; }
+[25-05-2026 14:27] Ajay Meena: .footer-links a:hover { color: #e8c84a; }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); padding-top: 24px; display: flex; align-items: center; justify-content: space-between; }
+  .footer-copy { color: #444; font-size: 12px; }
+  .social-links { display: flex; gap: 12px; }
+  .social-btn { width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s; color: #888; font-size: 14px; font-weight: 700; }
+  .social-btn:hover { background: #e8c84a; color: #000; border-color: #e8c84a; }
 
-.bot{
-    background:#444;
-}
-
-.input-area{
-    display:flex;
-    gap:10px;
-}
-
-#user-input{
-    flex:1;
-    padding:15px;
-    border:none;
-    border-radius:20px;
-    background:#2b2b2b;
-    color:white;
-    font-size:16px;
-}
-
-button{
-    width:90px;
-    border:none;
-    border-radius:20px;
-    background:#ffd54f;
-    font-weight:bold;
-    cursor:pointer;
-}
-
+  /* MODAL */
+  .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 999; display: none; align-items: center; justify-content: center; }
+  .modal-overlay.open { display: flex; }
+  .modal { background: #12121a; border-radius: 16px; width: 700px; max-width: 95vw; overflow: hidden; position: relative; }
+  .modal-hero { height: 280px; display: flex; align-items: flex-end; padding: 24px; position: relative; }
+  .modal-close { position: absolute; top: 16px; right: 16px; width: 36px; height: 36px; background: rgba(0,0,0,0.6); border: none; border-radius: 50%; color: #fff; font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+  .modal-body { padding: 24px; }
+  .modal-title-text { font-family: 'Bebas Neue', cursive; font-size: 42px; letter-spacing: 2px; position: relative; z-index: 2; }
+  .modal-tags { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
+  .modal-tag { background: rgba(255,255,255,0.07); color: #bbb; font-size: 12px; padding: 4px 12px; border-radius: 4px; }
+  .modal-desc { color: #999; font-size: 14px; line-height: 1.7; margin-bottom: 24px; }
+  .modal-btns { display: flex; gap: 12px; }
+  .modal-btns .btn-play { font-size: 14px; padding: 12px 24px; }
+  .modal-btns .btn-list { font-size: 14px; padding: 12px 20px; }
 </style>
 </head>
-
 <body>
 
-<div class="chat-container">
+<!-- NAVBAR -->
+<nav>
+  <div class="logo">ANIME<span>X</span></div>
+  <ul class="nav-links">
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Trending</a></li>
+    <li><a href="#">New Episodes</a></li>
+    <li><a href="#">Movies</a></li>
+    <li><a href="#">My List</a></li>
+  </ul>
+  <div class="nav-right">
+    <input type="text" class="search-box" placeholder="Search anime...">
+    <button class="btn-login">Log In</button>
+    <button class="btn-signup">Sign Up Free</button>
+  </div>
+</nav>
 
-<div class="title">🔥 Anime AI Premium</div>
-
-<div id="chat-box"></div>
-
-<div class="input-area">
-
-<input
-type="text"
-id="user-input"
-placeholder="Talk with Anime AI..."
->
-
-<button onclick="sendMessage()">
-Send
-</button>
-
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bg-overlay"></div>
+  <div class="hero-art">
+    <svg viewBox="0 0 500 580" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+      <defs>
+        <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#e8c84a" stop-opacity="0.15"/>
+          <stop offset="100%" stop-color="#e84a4a" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <ellipse cx="250" cy="300" rx="280" ry="280" fill="url(#glow)"/>
+      <ellipse cx="250" cy="420" rx="90" ry="120" fill="#1a0a0a" opacity="0.9"/>
+      <path d="M160 400 Q250 380 340 400 L360 520 Q250 540 140 520 Z" fill="#e84a4a" opacity="0.85"/>
+      <path d="M155 480 Q250 500 345 480 L350 540 Q250 555 150 540 Z" fill="#3d2b00" opacity="0.9"/>
+      <circle cx="250" cy="290" r="75" fill="#f5c07a" opacity="0.9"/>
+      <circle cx="228" cy="285" r="12" fill="#1a0a0a"/>
+      <circle cx="272" cy="285" r="12" fill="#1a0a0a"/>
+      <circle cx="231" cy="282" r="4" fill="#fff"/>
+      <circle cx="275" cy="282" r="4" fill="#fff"/>
+      <path d="M225 310 Q250 335 275 310" stroke="#1a0a0a" stroke-width="4" fill="none" stroke-linecap="round"/>
+      <path d="M268 295 L278 315" stroke="#c0392b" stroke-width="3" stroke-linecap="round"/>
+[25-05-2026 14:27] Ajay Meena: <ellipse cx="250" cy="225" rx="105" ry="18" fill="#d4a017" opacity="0.95"/>
+      <path d="M165 225 Q170 185 250 178 Q330 185 335 225" fill="#e8c84a" opacity="0.95"/>
+      <ellipse cx="250" cy="225" rx="105" ry="18" fill="none" stroke="#b8860b" stroke-width="3"/>
+      <path d="M175 222 Q250 214 325 222" stroke="#e84a4a" stroke-width="6" fill="none" stroke-linecap="round"/>
+      <path d="M160 410 Q120 440 100 480" stroke="#f5c07a" stroke-width="22" stroke-linecap="round" fill="none"/>
+      <path d="M340 410 Q380 440 400 480" stroke="#f5c07a" stroke-width="22" stroke-linecap="round" fill="none"/>
+      <circle cx="97" cy="487" r="18" fill="#f5c07a"/>
+      <circle cx="403" cy="487" r="18" fill="#f5c07a"/>
+      <circle cx="250" cy="350" r="180" fill="none" stroke="#e8c84a" stroke-width="1.5" stroke-dasharray="8 12" opacity="0.3"/>
+    </svg>
+  </div>
+  <div class="hero-content">
+    <div class="hero-badge">🏴‍☠️ #1 Most Watched</div>
+    <div class="hero-title">ONE<br><span>PIECE</span></div>
+    <div class="hero-meta">
+      <span class="hero-rating">⭐ 9.8</span>
+      <span class="hero-info">1108 Episodes • 1999–Present • Shonen</span>
+    </div>
+    <p class="hero-desc">Monkey D. Luffy sets sail to become King of the Pirates. With his rubber powers and an unbreakable crew, the Grand Line awaits. The greatest adventure ever told.</p>
+    <div class="hero-buttons">
+      <button class="btn-play" onclick="openModal('op')">&#9654; Watch Now</button>
+      <button class="btn-list">+ My List</button>
+    </div>
+  </div>
 </div>
 
+<!-- GENRES -->
+<div class="section">
+  <div class="genres-row">
+    <div class="genre-pill active" onclick="setGenre(this)">All</div>
+    <div class="genre-pill" onclick="setGenre(this)">Action</div>
+    <div class="genre-pill" onclick="setGenre(this)">Adventure</div>
+    <div class="genre-pill" onclick="setGenre(this)">Romance</div>
+    <div class="genre-pill" onclick="setGenre(this)">Thriller</div>
+    <div class="genre-pill" onclick="setGenre(this)">Comedy</div>
+    <div class="genre-pill" onclick="setGenre(this)">Supernatural</div>
+    <div class="genre-pill" onclick="setGenre(this)">Sports</div>
+    <div class="genre-pill" onclick="setGenre(this)">Isekai</div>
+    <div class="genre-pill" onclick="setGenre(this)">Horror</div>
+    <div class="genre-pill" onclick="setGenre(this)">Slice of Life</div>
+  </div>
+</div>
+
+<!-- TRENDING NOW -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-title">🔥 Trending <span>Now</span></div>
+    <a class="see-all">See All →</a>
+  </div>
+  <div class="cards-row" id="trending-cards"></div>
+</div>
+
+<!-- CONTINUE WATCHING -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-title">▶ Continue <span>Watching</span></div>
+    <a class="see-all">My List →</a>
+  </div>
+  <div class="wide-cards-row" id="continue-cards"></div>
+</div>
+
+<!-- NEW EPISODES -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-title">🆕 New <span>Episodes</span></div>
+    <a class="see-all">See All →</a>
+  </div>
+  <div class="cards-row" id="new-cards"></div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-logo">ANIME<span>X</span></div>
+      <p class="footer-desc">The ultimate destination for anime lovers. Stream thousands of episodes in HD, anytime, anywhere. Subtitled & Dubbed.</p>
+    </div>
+    <div>
+      <div class="footer-heading">Discover</div>
+      <ul class="footer-links">
+        <li><a href="#">Trending Anime</a></li>
+        <li><a href="#">New Releases</a></li>
+        <li><a href="#">Top Rated</a></li>
+        <li><a href="#">Movies</a></li>
+        <li><a href="#">Simulcast</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-heading">Account</div>
+[25-05-2026 14:27] Ajay Meena: <ul class="footer-links">
+        <li><a href="#">Sign Up</a></li>
+        <li><a href="#">Login</a></li>
+        <li><a href="#">My List</a></li>
+        <li><a href="#">Watch History</a></li>
+        <li><a href="#">Settings</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-heading">Company</div>
+      <ul class="footer-links">
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Help Center</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Use</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 AnimeX. All rights reserved. Made with ❤️ for anime fans.</span>
+    <div class="social-links">
+      <div class="social-btn">X</div>
+      <div class="social-btn">YT</div>
+      <div class="social-btn">IG</div>
+      <div class="social-btn">DC</div>
+    </div>
+  </div>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal" onclick="closeModal(event)">
+  <div class="modal" id="modal-box">
+    <div class="modal-hero" id="modal-hero">
+      <button class="modal-close" onclick="document.getElementById('modal').classList.remove('open')">✕</button>
+      <div class="modal-title-text" id="modal-title-text">ONE PIECE</div>
+      <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(18,18,26,1) 0%,rgba(18,18,26,0.3) 100%);"></div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-tags" id="modal-tags"></div>
+      <p class="modal-desc" id="modal-desc"></p>
+      <div class="modal-btns">
+        <button class="btn-play">&#9654; Watch Now</button>
+        <button class="btn-list">+ My List</button>
+        <button class="btn-list">&#11015; Download</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 <script>
+  const animeData = [
+    { id:'op', name:'One Piece', emoji:'🏴‍☠️', color:'#1a0505', ep:'Ep 1108', badge:'NEW', tags:['Shonen','Adventure','Action'], desc:'Luffy and the Straw Hats sail the Grand Line hunting the One Piece treasure to become King of the Pirates. 1000+ episodes of pure adventure.', progress:65 },
+    { id:'aot', name:'Attack on Titan', emoji:'⚔️', color:'#0d0d0d', ep:'Ep 87', badge:'', tags:['Dark','Action','Drama'], desc:'Humanity fights for survival behind massive walls as giants known as Titans devour humans without mercy.', progress:40 },
+    { id:'dn', name:'Death Note', emoji:'📓', color:'#0a0a15', ep:'Ep 37', badge:'', tags:['Thriller','Psychological'], desc:'A genius student finds a supernatural notebook that kills anyone whose name is written in it. A deadly cat-and-mouse game begins.', progress:80 },
+    { id:'nb', name:'Naruto', emoji:'🍥', color:'#1a0f00', ep:'Ep 220', badge:'', tags:['Shonen','Ninja','Action'], desc:'A young ninja with a demon fox sealed inside dreams of becoming Hokage. His journey teaches the true meaning of never giving up.', progress:55 },
+    { id:'db', name:'Dragon Ball Z', emoji:'⚡', color:'#0f0a00', ep:'Ep 291', badge:'CLASSIC', tags:['Action','Shonen'], desc:'Goku and friends defend Earth from increasingly powerful threats. Iconic battles, transformations, and the spirit of never backing down.', progress:20 },
+    { id:'jjk', name:'Jujutsu Kaisen', emoji:'💀', color:'#0a000f', ep:'Ep 47', badge:'HOT', tags:['Dark Fantasy','Action'], desc:'Yuji Itadori swallows a cursed finger and enters a world of sorcerers fighting monstrous Cursed Spirits. Incredible animation, brutal fights.' }
+  ];
 
-const API_KEY = "AIzaSyCOKQuSmxZ0o3rTvpqwTAcwn4pOOYFLOFY";
-
-const chatBox = document.getElementById("chat-box");
-const userInput = document.getElementById("user-input");
-
-function addMessage(sender,text){
-
-    const msg = document.createElement("div");
-
-    msg.classList.add("message");
-
-    if(sender === "user"){
-        msg.classList.add("user");
-    }else{
-        msg.classList.add("bot");
-    }
-
-    msg.innerText = text;
-
-    chatBox.appendChild(msg);
-
-    chatBox.scrollTop = chatBox.scrollHeight;
-}
-
-async function sendMessage(){
-
-    const text = userInput.value.trim();
-
-    if(!text) return;
-
-    addMessage("user", text);
-
-    userInput.value = "";
-
-    try{
-
-        const response = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`,
-        {
-            method:"POST",
-
-            headers:{
-                "Content-Type":"application/json"
-            },
-
-            body:JSON.stringify({
-                contents:[
-                    {
-                        parts:[
-                            {
-                                text:text
-                            }
-                        ]
-                    }
-                ]
-            })
-        });
-
-        const data = await response.json();
-
-        console.log(data);
-
-        if(data.candidates){
-
-            const reply =
-            data.candidates[0].content.parts[0].text;
-
-            addMessage("bot", reply);
-
-        }else{
-
-            addMessage("bot",
-            "AI failed to reply.");
-
-            console.log(data);
-        }
-
-    }catch(error){
-
-        console.log(error);
-
-        addMessage("bot",
-        "Error connecting AI.");
-    }
-}
-
-userInput.addEventListener("keypress", function(e){
-    if(e.key === "Enter"){
-        sendMessage();
-    }
-});
-
-</script>
-
-</body>
-</html>
-```
+  const continueData = [
+    { name:'One Piece', sub:'Episode 1108 — Gear 5 Revealed', color:'linear-gradient(135deg,#1a0505,#3d0000)', progress:65, emoji:'🏴‍☠️' },
+    { name:'Jujutsu Kaisen', sub:'Episode 47 — Hidden Inventory', color:'linear-gradient(135deg,#0a000f,#1a0020)', progress:30, emoji:'💀' },
+    { name:'Attack on Titan', sub:'Episode 87 — The Final Chapter', color:'linear-gradient(135deg,#0d0d0d,#1a1a1a)', progress:80, emoji:'⚔️' }
+  ];
+[25-05-2026 14:27] Ajay Meena: function buildCards(data, containerId, wide) {
+    const c = document.getElementById(containerId);
+    if (!c) return;
+    c.innerHTML = '';
+    if (wide) {
+      data.forEach(function(a) {
+        c.innerHTML += '<div class="wide-card" onclick="openModal(\'' + a.name + '\')">' +
+          '<div class="wide-card-body" style="background:' + a.color + ';">' +
+          '<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:80px;opacity:0.25;">' + a.emoji + '</di
