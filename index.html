@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
 <title>Anime AI Premium</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 
@@ -19,7 +19,7 @@
 }
 
 body{
-    background:#0f0f0f;
+    background:#0d0d0d;
     display:flex;
     justify-content:center;
     align-items:center;
@@ -31,12 +31,13 @@ body{
     width:90%;
     max-width:900px;
     height:90vh;
-    background:#181818;
+    background:#171717;
     border-radius:25px;
     padding:20px;
-    box-shadow:0 0 40px orange;
+    box-shadow:0 0 40px rgba(255,165,0,0.5);
     display:flex;
     flex-direction:column;
+    border:1px solid rgba(255,165,0,0.2);
 }
 
 .title{
@@ -50,36 +51,36 @@ body{
 #chat-box{
     flex:1;
     overflow-y:auto;
-    padding-right:10px;
+    padding:10px;
 }
 
 .message{
+    padding:14px 18px;
+    margin:12px 0;
+    border-radius:16px;
     max-width:80%;
-    padding:15px 20px;
-    margin:15px 0;
-    border-radius:18px;
-    font-size:17px;
     line-height:1.5;
-    word-wrap:break-word;
+    font-size:16px;
+    white-space:pre-wrap;
 }
 
 .user{
-    background:linear-gradient(45deg,#ffb347,#ffcc33);
-    color:#000;
     margin-left:auto;
-    box-shadow:0 0 15px #ffb347;
+    background:linear-gradient(45deg,#ffb347,#ffcc33);
+    color:black;
+    font-weight:600;
+    box-shadow:0 0 15px rgba(255,179,71,0.5);
 }
 
 .bot{
-    background:#2c2c2c;
-    color:#fff;
     margin-right:auto;
-    box-shadow:0 0 10px rgba(255,255,255,0.2);
+    background:#2b2b2b;
+    color:white;
 }
 
 .input-area{
     display:flex;
-    gap:12px;
+    gap:10px;
     margin-top:15px;
 }
 
@@ -88,22 +89,23 @@ body{
     padding:18px;
     border:none;
     outline:none;
-    border-radius:15px;
-    background:#2b2b2b;
+    border-radius:14px;
+    background:#252525;
     color:white;
     font-size:16px;
 }
 
 button{
-    padding:16px 28px;
     border:none;
-    border-radius:15px;
+    padding:0 28px;
+    border-radius:14px;
+    cursor:pointer;
     background:linear-gradient(45deg,#ffb347,#ffcc33);
     color:black;
     font-weight:700;
-    cursor:pointer;
+    font-size:16px;
     transition:0.3s;
-    box-shadow:0 0 15px orange;
+    box-shadow:0 0 15px rgba(255,179,71,0.5);
 }
 
 button:hover{
@@ -111,7 +113,7 @@ button:hover{
 }
 
 ::-webkit-scrollbar{
-    width:8px;
+    width:7px;
 }
 
 ::-webkit-scrollbar-thumb{
@@ -138,7 +140,7 @@ button:hover{
             type="text"
             id="user-input"
             placeholder="Talk with Anime AI..."
-        >
+        />
 
         <button onclick="sendMessage()">
             Send
@@ -157,19 +159,19 @@ const userInput = document.getElementById("user-input");
 
 function addMessage(sender,text){
 
-    const msg = document.createElement("div");
+    const div = document.createElement("div");
 
-    msg.classList.add("message");
+    div.classList.add("message");
 
     if(sender === "user"){
-        msg.classList.add("user");
+        div.classList.add("user");
     }else{
-        msg.classList.add("bot");
+        div.classList.add("bot");
     }
 
-    msg.innerText = text;
+    div.innerText = text;
 
-    chatBox.appendChild(msg);
+    chatBox.appendChild(div);
 
     chatBox.scrollTop = chatBox.scrollHeight;
 }
@@ -178,7 +180,7 @@ async function sendMessage(){
 
     const text = userInput.value.trim();
 
-    if(!text) return;
+    if(text === "") return;
 
     addMessage("user",text);
 
@@ -214,18 +216,21 @@ async function sendMessage(){
         console.log(data);
 
         const reply =
-        data.candidates[0].content.parts[0].text;
+        data?.candidates?.[0]?.content?.parts?.[0]?.text;
 
-        addMessage("bot",reply);
+        if(reply){
+            addMessage("bot",reply);
+        }else{
+            addMessage("bot","AI reply nahi de paaya.");
+        }
 
-    }
-    catch(error){
+    }catch(error){
 
         console.log(error);
 
         addMessage(
             "bot",
-            "Anime AI could not reply."
+            "Connection error."
         );
     }
 }
