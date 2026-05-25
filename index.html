@@ -1,13 +1,17 @@
 ```html
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Anime+ Premium Login</title>
+
+<title>Anime AI Universe</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 
@@ -19,236 +23,534 @@ font-family:'Poppins',sans-serif;
 }
 
 body{
-height:100vh;
+
 background:
-linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.8)),
-url('https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1974&auto=format&fit=crop');
+linear-gradient(rgba(0,0,0,0.8),
+rgba(0,0,0,0.95)),
+
+url("https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1974&auto=format&fit=crop");
+
 background-size:cover;
 background-position:center;
-display:flex;
-justify-content:center;
-align-items:center;
-overflow:hidden;
+
+min-height:100vh;
+
 color:white;
+
+overflow-x:hidden;
 }
 
-.container{
-width:380px;
-padding:40px;
-border-radius:25px;
-backdrop-filter:blur(15px);
-background:rgba(255,255,255,0.08);
-border:1px solid rgba(255,255,255,0.2);
-box-shadow:0 0 40px rgba(255,140,0,0.4);
-animation:fadeIn 1s ease;
-}
+/* NAVBAR */
 
-@keyframes fadeIn{
-from{
-opacity:0;
-transform:translateY(40px);
-}
-to{
-opacity:1;
-transform:translateY(0);
-}
+nav{
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+padding:20px 60px;
+
+background:rgba(0,0,0,0.4);
+
+backdrop-filter:blur(12px);
+
+position:sticky;
+top:0;
+
+z-index:1000;
 }
 
 .logo{
-text-align:center;
+
 font-size:35px;
-font-weight:700;
-margin-bottom:10px;
-color:#ffb347;
-text-shadow:0 0 20px orange;
+font-weight:800;
+
+color:#ff9800;
+
+text-shadow:0 0 20px #ff9800;
 }
 
-.subtitle{
+nav ul{
+
+display:flex;
+gap:30px;
+
+list-style:none;
+}
+
+nav ul li{
+
+cursor:pointer;
+
+transition:0.3s;
+}
+
+nav ul li:hover{
+
+color:#ff9800;
+}
+
+/* HERO */
+
+.hero{
+
+padding:100px 20px 50px;
+
 text-align:center;
-font-size:14px;
-opacity:0.8;
-margin-bottom:30px;
+}
+
+.hero h1{
+
+font-size:80px;
+
+margin-bottom:20px;
+
+text-shadow:0 0 30px #ff9800;
+
+animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+
+from{
+text-shadow:0 0 10px #ff9800;
+}
+
+to{
+text-shadow:0 0 35px #ff5500;
+}
+
+}
+
+.hero p{
+
+font-size:22px;
+
+color:#ddd;
+
+max-width:700px;
+
+margin:auto;
+}
+
+/* AI BOX */
+
+.ai-box{
+
+max-width:700px;
+
+margin:50px auto;
+
+padding:35px;
+
+border-radius:25px;
+
+background:rgba(255,255,255,0.08);
+
+backdrop-filter:blur(15px);
+
+box-shadow:0 0 30px rgba(255,153,0,0.3);
+}
+
+.ai-box h2{
+
+text-align:center;
+
+margin-bottom:25px;
+
+color:#ff9800;
 }
 
 input{
+
 width:100%;
-padding:14px;
-margin:10px 0;
+
+padding:18px;
+
 border:none;
 outline:none;
-border-radius:12px;
+
+border-radius:15px;
+
 background:rgba(255,255,255,0.12);
+
 color:white;
-font-size:15px;
+
+font-size:16px;
+
+margin-bottom:20px;
 }
 
 input::placeholder{
-color:#ddd;
+
+color:#ccc;
 }
 
 button{
+
 width:100%;
-padding:14px;
-margin-top:20px;
+
+padding:16px;
+
 border:none;
-border-radius:14px;
+border-radius:15px;
+
 background:linear-gradient(45deg,#ff9800,#ff5722);
+
 color:white;
-font-size:16px;
+
+font-size:18px;
 font-weight:600;
+
 cursor:pointer;
+
 transition:0.3s;
 }
 
 button:hover{
-transform:scale(1.05);
-box-shadow:0 0 20px orange;
+
+transform:scale(1.03);
+
+box-shadow:0 0 25px #ff9800;
 }
 
-.switch{
-margin-top:20px;
-text-align:center;
-font-size:14px;
-}
+/* RESULT */
 
-.switch span{
-color:#ffb347;
-cursor:pointer;
-font-weight:bold;
-}
+.result{
 
-.home{
+margin-top:30px;
+
+padding:25px;
+
+border-radius:20px;
+
+background:rgba(255,255,255,0.06);
+
 display:none;
-text-align:center;
 }
 
-.home h1{
-font-size:40px;
-margin-bottom:20px;
-color:#ffb347;
-}
+.result h3{
 
-.home p{
-margin-bottom:30px;
-}
+color:#ff9800;
 
-.logout{
-background:red;
-}
-
-.anime-card{
-margin-top:25px;
-padding:20px;
-border-radius:18px;
-background:rgba(255,255,255,0.08);
-}
-
-.anime-card img{
-width:100%;
-border-radius:15px;
 margin-bottom:15px;
 }
 
+.result p{
+
+line-height:1.7;
+
+color:#ddd;
+}
+
+/* CARDS */
+
+.section-title{
+
+text-align:center;
+
+font-size:45px;
+
+margin:60px 0 40px;
+
+color:#ff9800;
+}
+
+.cards{
+
+display:flex;
+justify-content:center;
+
+gap:30px;
+
+flex-wrap:wrap;
+
+padding:20px;
+}
+
+.card{
+
+width:300px;
+
+background:rgba(255,255,255,0.08);
+
+border-radius:20px;
+
+overflow:hidden;
+
+transition:0.4s;
+}
+
+.card:hover{
+
+transform:translateY(-10px) scale(1.04);
+
+box-shadow:0 0 30px #ff9800;
+}
+
+.card img{
+
+width:100%;
+height:350px;
+
+object-fit:cover;
+}
+
+.card-content{
+
+padding:20px;
+}
+
+.card-content h2{
+
+margin-bottom:10px;
+
+color:#ff9800;
+}
+
+.card-content p{
+
+color:#ccc;
+}
+
+/* FOOTER */
+
+footer{
+
+text-align:center;
+
+padding:35px;
+
+margin-top:60px;
+
+background:black;
+
+color:#777;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+.hero h1{
+
+font-size:50px;
+}
+
+.hero p{
+
+font-size:18px;
+}
+
+nav{
+
+padding:20px;
+}
+
+nav ul{
+
+gap:15px;
+}
+
+}
+
 </style>
+
 </head>
 
 <body>
 
-<div class="container">
+<!-- NAVBAR -->
 
-<div id="authBox">
+<nav>
 
-<div class="logo">ANIME+ 🔥</div>
-<div class="subtitle">Premium Anime Universe</div>
+<div class="logo">AI ANIME 🔥</div>
 
-<input type="text" id="username" placeholder="Enter Username">
-<input type="password" id="password" placeholder="Enter Password">
+<ul>
 
-<button onclick="signup()">Signup</button>
-<button onclick="login()">Login</button>
+<li>Home</li>
+<li>AI Search</li>
+<li>Trending</li>
+<li>Contact</li>
 
-<div class="switch">
-Already a member? <span>Welcome Otaku 👀</span>
+</ul>
+
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<h1>AI POWERED ANIME WORLD 🤖</h1>
+
+<p>
+Ask the AI for anime recommendations,
+dark anime, emotional anime, action anime and more.
+</p>
+
+</section>
+
+<!-- AI SECTION -->
+
+<div class="ai-box">
+
+<h2>🤖 Anime AI Assistant</h2>
+
+<input type="text" id="animeInput"
+placeholder="Type: action anime, sad anime, dark anime...">
+
+<button onclick="recommendAnime()">
+GET AI RECOMMENDATION
+</button>
+
+<div class="result" id="resultBox">
+
+<h3 id="animeTitle"></h3>
+
+<p id="animeDescription"></p>
+
 </div>
 
 </div>
 
-<div class="home" id="homePage">
+<!-- TRENDING -->
 
-<h1>Welcome 🎌</h1>
+<h1 class="section-title">
+🔥 TRENDING AI PICKS
+</h1>
 
-<p id="welcomeText"></p>
+<div class="cards">
 
-<div class="anime-card">
+<div class="card">
 
-<img src="https://images.unsplash.com/photo-1542751110-97427bbecf20?q=80&w=1974&auto=format&fit=crop">
+<img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1200">
 
-<h2>Shadow Samurai</h2>
+<div class="card-content">
 
-<p>Enter the world of legendary battles and epic anime adventures.</p>
+<h2>Cyber Samurai</h2>
+
+<p>
+Futuristic anime warrior from Neo Tokyo.
+</p>
 
 </div>
 
-<button class="logout" onclick="logout()">Logout</button>
+</div>
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200">
+
+<div class="card-content">
+
+<h2>Shadow Hunter</h2>
+
+<p>
+Dark anime filled with mystery and power.
+</p>
 
 </div>
 
 </div>
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200">
+
+<div class="card-content">
+
+<h2>Blade Hero</h2>
+
+<p>
+Legendary anime battles and epic fights.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- FOOTER -->
+
+<footer>
+
+<p>
+© 2026 AI Anime Universe 🚀
+</p>
+
+</footer>
+
+<!-- JAVASCRIPT -->
 
 <script>
 
-const authBox = document.getElementById("authBox");
-const homePage = document.getElementById("homePage");
-const welcomeText = document.getElementById("welcomeText");
+function recommendAnime(){
 
-function signup(){
+const input =
+document.getElementById("animeInput").value.toLowerCase();
 
-const username = document.getElementById("username").value;
-const password = document.getElementById("password").value;
+const resultBox =
+document.getElementById("resultBox");
 
-if(username === "" || password === ""){
-alert("Please fill all fields");
-return;
-}
+const title =
+document.getElementById("animeTitle");
 
-localStorage.setItem("animeUser", username);
-localStorage.setItem("animePass", password);
+const description =
+document.getElementById("animeDescription");
 
-alert("Signup Successful 🔥");
+resultBox.style.display = "block";
 
-}
+if(input.includes("dark")){
 
-function login(){
+title.innerHTML = "Tokyo Ghoul 👁";
 
-const username = document.getElementById("username").value;
-const password = document.getElementById("password").value;
-
-const savedUser = localStorage.getItem("animeUser");
-const savedPass = localStorage.getItem("animePass");
-
-if(username === savedUser && password === savedPass){
-
-authBox.style.display = "none";
-homePage.style.display = "block";
-
-welcomeText.innerHTML = "Hello " + username + " 👋";
+description.innerHTML =
+"A dark psychological anime filled with horror, mystery and emotional battles.";
 
 }
+
+else if(input.includes("sad")){
+
+title.innerHTML = "Your Lie In April 🎹";
+
+description.innerHTML =
+"A beautiful emotional anime about music, love and heartbreak.";
+
+}
+
+else if(input.includes("action")){
+
+title.innerHTML = "Attack On Titan ⚔";
+
+description.innerHTML =
+"One of the greatest action anime with epic fights and intense story.";
+
+}
+
+else if(input.includes("magic")){
+
+title.innerHTML = "Black Clover ✨";
+
+description.innerHTML =
+"A magical anime universe with powerful wizards and rivalries.";
+
+}
+
 else{
-alert("Wrong Username or Password");
-}
+
+title.innerHTML = "Naruto 🔥";
+
+description.innerHTML =
+"Legendary anime filled with ninja battles, friendship and dreams.";
 
 }
-
-function logout(){
-
-homePage.style.display = "none";
-authBox.style.display = "block";
 
 }
 
 </script>
 
 </body>
+
 </html>
 ```
